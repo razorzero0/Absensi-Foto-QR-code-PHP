@@ -74,22 +74,22 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Tambah User</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form action="list-member" method="post">
                 @csrf
               <div class="form-floating mb-3">
-              <input type="text" class="form-control" name="nama" id="floatingInput" placeholder="name@example.com">
+              <input type="text" class="form-control" name="nama" id="floatingInput" >
               <label for="floatingInput">nama</label>
               </div>
               <div class="form-floating mb-3">
-              <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
+              <input type="email" class="form-control" name="email" id="floatingInput" >
               <label for="floatingInput">email</label>
               </div>
               <div class="form-floating mb-3">
-              <input type="text" class="form-control" name="alamat" id="floatingInput" placeholder="name@example.com">
+              <input type="text" class="form-control" name="alamat" id="floatingInput" >
               <label for="floatingInput">alamat</label>
               </div>
                   <div class="form-check form-check-inline">

@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('nama_jabatan');
-            $table->integer('gaji_pokok');
-            $table->integer('uang_makan');
             $table->timestamps();
         });
     }

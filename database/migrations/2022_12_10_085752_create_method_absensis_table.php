@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('method_absensis', function (Blueprint $table) {
             $table->id();
-            $table->integer("checklist")->default(null);
+            $table->string("batas_akhir")->default(null);
             $table->integer("foto")->default(null);
             $table->integer("qrcode")->default(null);
             $table->timestamps();

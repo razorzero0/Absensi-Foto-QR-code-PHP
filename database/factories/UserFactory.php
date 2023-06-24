@@ -18,12 +18,13 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'nama' => "yayan",
+            'nama' => "admin",
             'jenis_kelamin' => "L",
             "alamat" => "Kediri",
             "image" => "",
             'email' => "jwacana@example.net",
             'role_id' => '1',
+            'is_admin' => '1',
             'email_verified_at' => now(),
             'password' => '$2y$10$DvmjZ2vl6upwXHSzcmIqxutXoQhUYSNPJuRkzaFUQBAs0sv9lNmSS', // password
             'remember_token' => Str::random(10),

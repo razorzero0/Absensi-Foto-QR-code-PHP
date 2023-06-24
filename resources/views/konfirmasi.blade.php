@@ -7,7 +7,7 @@
     <br>
     <br>
     <div class="mt-100">
-<h3 class="text-center">Berhasil Absen, <a href="/dashboard">kembali dashboard</a></h3>
+<h3 class="text-center">{{ auth()->user()->nama }} berhasil Absen, </h3>
     </div>
 </div>
 @endsection

@@ -82,12 +82,14 @@ class methodAbsensiController extends Controller
         if($request->a == 1){
             method_absensi::find($id)->update([
                 'foto' => '1',
-                'qrcode' => '0'
+                'qrcode' => '0',
+                'batas_akhir' => $request->batas_akhir
             ]);
         }else{
             method_absensi::find($id)->update([
                 'foto' => '0',
-                'qrcode' => '1'
+                'qrcode' => '1',
+                'batas_akhir' => $request->batas_akhir
             ]); 
         }
         return redirect('/metode-absensi')->with('succes','berhasil update');

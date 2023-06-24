@@ -22,7 +22,7 @@ class absensiController extends Controller
     {
         
         return view('admin/absensi/absensi',[
-            'denda' => Fine::all(),
+            // 'denda' => Fine::all(),
             'kehadiran' => Presence::all(),
             'presence' => Presence::where('user_id',auth()->user()->id)->latest()->get(),
             'metod' => method_absensi::find(1)
@@ -59,7 +59,7 @@ class absensiController extends Controller
      */
     public function store(Request $request)
     {
-      
+        
         if($request->hadir){
         $hadir = $request->hadir;
         }else{
@@ -118,6 +118,7 @@ class absensiController extends Controller
     public function update(Request $request, $id)
     {
         
+        
         $presence = Presence::find($id);
         if($request->hadir){
             $hadir = 1;
@@ -131,9 +132,9 @@ class absensiController extends Controller
                 $sakit = 0;
             }
            
-            
+            $batas = method_absensi::find(1);
             $currentTime = strtotime($request->alfa);
-            $startTime = strtotime('11:00');
+            $startTime = strtotime($batas['batas_akhir']);
             if($currentTime < $startTime ){
                 $alfa = 0;
                 }else{
@@ -143,7 +144,7 @@ class absensiController extends Controller
                 $a = User::find($request->user_id);
                 $b = Role::find($a->role_id);
                 
-            if($request->tgl == 18){
+            if($request->tgl == 1){
                 Presence::Create([
                     'hadir' => $hadir,
                     'alfa' => $alfa,
@@ -161,14 +162,14 @@ class absensiController extends Controller
                     'user_id' => $request->user_id,
                     
                 ]); 
-                $s = Presence::find($id);
-                $f = Fine::all();
-                $g = Salary::where('user_id',$request->user_id)->get();
-                Salary::where('user_id',$request->user_id)
-                ->update([
-                    'potongan' => $s->alfa*$f[0]->jumlah_denda,
-                    'total' =>$g[0]->gaji_pokok - $s->alfa*$f[0]->jumlah_denda
-                ]);
+                // $s = Presence::find($id);
+                // $f = Fine::all();
+                // $g = Salary::where('user_id',$request->user_id)->get();
+                // Salary::where('user_id',$request->user_id)
+                // ->update([
+                //     'potongan' => $s->alfa*$f[0]->jumlah_denda,
+                //     'total' =>$g[0]->gaji_pokok - $s->alfa*$f[0]->jumlah_denda
+                // ]);
 
                 
             }
@@ -212,7 +213,7 @@ class absensiController extends Controller
         
           
         $currentTime = strtotime($request->alfa);
-        $startTime = strtotime('11:00');
+      
         if($currentTime < $startTime && $request->alfa && $request->hadir){
             $i = 'hadir';
             }else{
@@ -232,7 +233,7 @@ class absensiController extends Controller
                 'status' => $i,
                 'absen_image' => $fileName,
                 'nama' => $request->nama,
-                'keluar' => 0,
+                'keluar' => null,
                 'masuk' => $request->alfa
                 
             ]);

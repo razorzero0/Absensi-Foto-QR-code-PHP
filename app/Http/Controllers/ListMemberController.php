@@ -44,13 +44,15 @@ class ListMemberController extends Controller
      */
     public function store(Request $request)
     {
-
+        $role = "";
+        $request->role_id == 1 ?  $role = 1 : $role = 0;
         User::create([
             'nama' => $request->nama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'password' => bcrypt($request->password),
             'role_id' => $request->role_id,
+            'is_admin' => $role,
             'email' => $request->email
         ]);
         $role = role::find($request->role_id);
@@ -63,12 +65,12 @@ class ListMemberController extends Controller
         ]);
         
 
-        Salary::create([
-            'user_id' => $a[0]->id,
-            'gaji_pokok' => $role->gaji_pokok,
-            'total' => $role->gaji_pokok,
-            'jabatan' => $role->nama_jabatan
-        ]);
+        // Salary::create([
+        //     'user_id' => $a[0]->id,
+        //     'gaji_pokok' => $role->gaji_pokok,
+        //     'total' => $role->gaji_pokok,
+        //     'jabatan' => $role->nama_jabatan
+        // ]);
         return redirect('/list-member')->with('succes','berhasil');
 
         //create kehadiran 

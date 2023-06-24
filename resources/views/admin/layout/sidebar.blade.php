@@ -45,15 +45,15 @@
                                 
                             <div class="sb-sidenav-menu-heading ">Core</div>
                            
-                            <a class="nav-link" href="/Dashboard">
+                            <a class="nav-link" href="/dashboard">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
                            
                         @auth
-                        @can('admin')
+                        @if(auth()->user()->is_admin == 1)
                         
-                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <div class="sb-sidenav-menu-heading"> Main</div>
                            
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -76,7 +76,7 @@
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Absensi
+                                Data Absensi
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
@@ -110,10 +110,10 @@
                                    
                                 </nav>
                             </div>
-                                @endcan
+                                @endif
                           
                             
-                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <div class="sb-sidenav-menu-heading">Absen</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePagesss" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Absen

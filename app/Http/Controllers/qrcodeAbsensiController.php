@@ -52,6 +52,7 @@ class qrcodeAbsensiController extends Controller
         if(User::find($request->user_id)){
         $presence = Presence::where('user_id',$request->user_id)->get();
         $id = $presence[0]->id;
+        // dd($ss);
        
         if($request->hadir){
             $hadir = 1;
@@ -65,9 +66,9 @@ class qrcodeAbsensiController extends Controller
                 $sakit = 0;
             }
            
-            
+            $batas = method_absensi::find(1);
             $currentTime = strtotime($request->alfa);
-            $startTime = strtotime('11:00');
+            $startTime = strtotime($batas['batas_akhir']);
             if($currentTime < $startTime ){
                 $alfa = 0;
                 }else{
@@ -95,13 +96,13 @@ class qrcodeAbsensiController extends Controller
                     
                 ]); 
                 $s = Presence::find($id);
-                $f = Fine::all();
-                $g = Salary::where('user_id',$request->user_id)->get();
-                Salary::where('user_id',$request->user_id)
-                ->update([
-                    'potongan' => $s->alfa*$f[0]->jumlah_denda,
-                    'total' =>$g[0]->gaji_pokok - $s->alfa*$f[0]->jumlah_denda
-                ]);
+                // $f = Fine::all();
+                // $g = Salary::where('user_id',$request->user_id)->get();
+                // Salary::where('user_id',$request->user_id)
+                // ->update([
+                //     'potongan' => $s->alfa*$f[0]->jumlah_denda,
+                //     'total' =>$g[0]->gaji_pokok - $s->alfa*$f[0]->jumlah_denda
+                // ]);
 
                 
             }
@@ -110,7 +111,7 @@ class qrcodeAbsensiController extends Controller
         
           
         $currentTime = strtotime($request->alfa);
-        $startTime = strtotime('11:00');
+       
         if($currentTime < $startTime && $request->alfa && $request->hadir){
             $i = 'hadir';
             }else{
@@ -129,7 +130,7 @@ class qrcodeAbsensiController extends Controller
                 'jabatan' => $b->nama_jabatan,
                 'status' => $i,
                 'nama' => $request->nama,
-                'keluar' => 0,
+                'keluar' => null,
                 'masuk' => $request->alfa
                 
             ]);

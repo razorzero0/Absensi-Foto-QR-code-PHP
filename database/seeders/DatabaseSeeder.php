@@ -16,13 +16,20 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(1)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => "yayan",
-        //     'email' => "jwacana@example.net",
-        //     'role_id' => '1',
-        //     'email_verified_at' => now(),
-        //     'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        //     'remember_token' => Str::random(10),
-        // ]);
+        \App\Models\Role::create([
+            'nama_jabatan' => "admin",   
+        ]);
+        \App\Models\Role::create([
+            'nama_jabatan' => "user",   
+        ]);
+        \App\Models\method_absensi::create([
+            "batas_akhir" => "12:00",
+            "foto" => 1,
+            "qrcode" => 0    
+        ]);
+        \App\Models\Presence::create([
+            "user_id" => 1,
+            "jabatan" => "admin"  
+        ]);
     }
 }

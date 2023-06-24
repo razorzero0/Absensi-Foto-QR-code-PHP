@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('jenis_kelamin');
             $table->string('alamat');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('password');
             $table->foreignId('role_id');
             $table->foreignId('is_admin')->nullable();
