@@ -7,7 +7,7 @@ Aplikasi absensi online berbasis web yang saya buat menggunakan Laravel 9 adalah
 
 ## Installation
 
-git clone this repo . thrn open the directory,
+git clone this repo then open the directory,
 
 on command prompt :
 
@@ -41,8 +41,6 @@ http://lademy.my.id
 
 
 ## Auth
-
-To run this project, you will need to add the following environment variables to your .env file
 
 email   : yayan@gmail.com
 pass    : yayan
