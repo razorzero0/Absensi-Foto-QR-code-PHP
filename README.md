@@ -21,7 +21,7 @@ composer install
 cp .env.example .env
 
 ### Konfigurasi Environment
-### Sesuaikan pengaturan database (nama database, username, password) di file .env
+ Sesuaikan pengaturan database (nama database, username, password) di file .env
 
 ### Generate App Key
 php artisan key:generate
