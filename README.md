@@ -7,25 +7,38 @@ Aplikasi absensi online berbasis web yang saya buat menggunakan Laravel 9 adalah
 
 ## Installation
 
-git clone this repo then open the directory,
+#!/bin/bash
 
-on command prompt :
+# Clone Repository
+git clone https://github.com/razorzero0/Absensi-Foto-QR-code-PHP.git
 
-```bash
-php artisan serve
-```
+# Masuk ke Direktori
+cd Absensi-Foto-QR-code-PHP
 
-```bash
+# Instal Dependensi
+composer install
+
+# Buat File Environment
+cp .env.example .env
+
+# Konfigurasi Environment
+# Sesuaikan pengaturan database (nama database, username, password) di file .env
+
+# Generate App Key
+php artisan key:generate
+
+# Jalankan Migrasi Database
 php artisan migrate
-```
 
-```bash
+# Menjalankan Database Seeder
 php artisan db:seed
-```
 
-```bash
+# Link Storage
 php artisan storage:link
-```
+
+# Menjalankan Server
+php artisan serve
+
 
 
 ## Requirments
